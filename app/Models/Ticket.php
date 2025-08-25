@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Ticket extends Model
+{
+    protected $fillable = [
+        'customer_id',
+        'support_id',
+        'description',
+        'status',
+    ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function support()
+    {
+        return $this->belongsTo(Support::class,'support_id');
+    }
+}
